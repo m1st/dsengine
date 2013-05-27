@@ -13,7 +13,6 @@ public class DSEngineService {
 
     @WebMethod(operationName = "qqq")
     public String[] qqq() {
-        //TODO write your implementation code here:
         return new String[]{"aaa", "bbb"};
     }
 }
