@@ -1,18 +1,19 @@
 
 package com.dsengine;
 
+import javax.ejb.EJB;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 
-/**
- *
- * @author m1st
- */
 @WebService(serviceName = "DSEngineService")
 public class DSEngineService {
+    
+    @EJB
+    DSActivityFactory activityFactory;
 
-    @WebMethod(operationName = "qqq")
-    public String[] qqq() {
-        return new String[]{"aaa", "bbb"};
+    @WebMethod
+    public String[] executeActivity(String activityName) {
+        DSActivityInterface act = activityFactory.getActivity(activityName);
+        return new String[]{act.execute()};
     }
 }
